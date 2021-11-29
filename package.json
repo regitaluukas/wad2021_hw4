@@ -1,0 +1,23 @@
+{
+  "name": "wad2021_hw4",
+  "version": "1.0.0",
+  "description": "Web Application Development 2021 <br/>\r Homework 4 <br/>\r Regita Luukas, Kadi-Riin Toomoja, Mathilda Rebane",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regitaluukas/wad2021_hw4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/regitaluukas/wad2021_hw4/issues"
+  },
+  "homepage": "https://github.com/regitaluukas/wad2021_hw4#readme",
+  "dependencies": {
+    "ejs": "^3.1.6"
+  }
+}
