@@ -9,7 +9,8 @@
   <body>
     <div id="main">
         <% if (posts.length > 0) { %> <% posts.forEach(post => { %>
-        <a class="post" href="/singlepost/<%= post.id %>">
+        <div class="post">
+        <a href="/singlepost/<%= post.id %>"> 
           <div class="post_header">
             <div class="icon">
               <img src="me.png" alt="profile picture" />
@@ -26,12 +27,13 @@
             <p class="body"><%= post.body %></p>
           </div>
           <div class="post_bottom">
+        </a>
             <button>
               <img src="likebutton.png" alt="like_button" />
               <span class="likes">1</span>
             </button>
           </div>
-        </a>
+        </div>
         <% }) %> <% } else { %>
         <p>You did not post anything...</p>
         <% } %>
