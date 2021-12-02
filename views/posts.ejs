@@ -1,27 +1,43 @@
 <html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="/style.css">
- <title>Posts</title>
-</head>
-<body>
- <div class="posts list">
- <% if (posts.length > 0) { %>
- <% posts.forEach(post => { %>
- <a class="singlepost" href="/singlepost/<%= post.id %>">
- <h3 class="title">
- <%= post.title %>
- </h3>
- <p class="body">
- <%= post.body %>
- </p>
- </a>
- <% }) %>
- <% } else { %>
- <p>You did not post anything...</p>
- <% } %>
- </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Posts</title>
+  </head>
+  <body>
+    <div id="main">
+      <div class="posts list">
+        <% if (posts.length > 0) { %> <% posts.forEach(post => { %>
+        <a class="singlepost" href="/singlepost/<%= post.id %>">
+          <div class="post_header">
+            <div class="icon">
+              <img src="me.png" alt="profile picture" />
+            </div>
+            <div class="dateTime">
+              <p>12.02.2022</p>
+            </div>
+          </div>
+          <div class="picture">
+            <img src= <%= post.url%>  alt="post picture" />
+          </div>
+          <div class="post_text">
+            <h3 class="title"><%= post.title %></h3>
+            <p class="body"><%= post.body %></p>
+          </div>
+          <div class="post_bottom">
+            <button>
+              <img src="likebutton.png" alt="like_button" />
+              <span class="likes">1</span>
+            </button>
+          </div>
+         
+        </a>
+        <% }) %> <% } else { %>
+        <p>You did not post anything...</p>
+        <% } %>
+      </div>
+    </div>
+  </body>
 </html>
