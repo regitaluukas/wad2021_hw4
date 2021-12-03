@@ -17,7 +17,7 @@
               <img src="me.png" alt="profile picture" />
             </div>
             <div class="dateTime">
-              <p>12.02.2022</p>
+              <p>12.02.2021</p>
             </div>
           </div>
           <div class="picture">
@@ -29,9 +29,9 @@
           </div>
           <div class="post_bottom">
         </a>
-            <button>
-              <img src="likebutton.png" alt="like_button" />
-              <span class="likes">1</span>
+            <button @click="increment({<%= post.likes %>})" class="like">
+              <img src="likebutton.png" alt="like button" />
+              <span class="likes"><%= post.likes%></span>
             </button>
           </div>
         </div>
@@ -39,5 +39,14 @@
         <p>You did not post anything...</p>
         <% } %>
     </div>
+    <script>
+      const likereq = document.querySelector('button.like');
+      likereq.addEventListener("click", (e) => {
+        const endpoint = `/posts/${likereq.dataset.put}`;
+        fetch(endpoint, {
+          method: "PUT",
+        }).then((window.location.href = "/posts"));
+    });
+    </script>
   </body>
 </html>

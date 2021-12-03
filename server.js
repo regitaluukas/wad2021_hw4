@@ -54,7 +54,7 @@ app.get('/posts/:id', async(req, res) => {
     }
    });
    
-   app.delete('/posts/:id', async(req, res) => {
+app.delete('/posts/:id', async(req, res) => {
     try {
     console.log(req.params);
     const { id } = req.params;
@@ -69,15 +69,30 @@ app.get('/posts/:id', async(req, res) => {
     }
    });
 
-   app.post('/posts', async(req, res) => {
+app.post('/posts', async(req, res) => {
     try {
     const post = req.body;
     console.log(post);
     const newpost = await pool.query(
-    "INSERT INTO nodetable(title, body, urllink) values ($1, $2, $3)RETURNING*", [post.title, post.body, post.urllink]
+    "INSERT INTO posts(title, body, urllink) values ($1, $2, $3)RETURNING*", [post.title, post.body, post.urllink]
     );
     res.redirect('posts');
     } catch (err) {
     console.error(err.message)
     }
    });
+
+app.put('/posts/:id', async(req, res) => {
+    try {
+    const { id } = req.params;
+    const post = req.body;
+    console.log("update request has arrived");
+    const updatepost = await pool.query(
+    "UPDATE posts SET likes = likes + 1 WHERE id = $1", [post.likes]
+    );
+    res.redirect('posts');
+    } catch (err) {
+    console.error(err.message);
+    }
+   });
+   
