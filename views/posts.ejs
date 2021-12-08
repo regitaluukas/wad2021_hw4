@@ -44,12 +44,9 @@
     <script>
      const likereq = document.querySelector("button.like");
       likereq.addEventListener("click", (e) => {
-        const endpoint = `/posts`;
+        const endpoint = `/posts/${likereq.dataset.put}`;
         fetch(endpoint, {
           method: "PUT",
-          body:{
-            id: 11,
-          }
         }).then((window.location.href = `/posts`));;
     });
     </script>
