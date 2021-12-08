@@ -96,26 +96,7 @@ app.put('/posts/:id', async(req, res) => {
     const updatepost = await pool.query(
     "UPDATE posts SET likes = likes + 1 WHERE id = $1", [id]
     );
-    res.redirect('posts');
-    console.log("tehtud");
-    } catch (err) {
-    console.error(err.message);
-    }
-   });
-
-app.put('/posts', async(req, res) => {
-    console.log("jõudsin")
-    try {
-    console.log(req.params)
-    const { id } = req.params;
-    const post = req.body;
-    console.log(id);
-    console.log("update request has arrived: update likes");
-    
-    const updatepost = await pool.query(
-    "UPDATE posts SET likes = likes + 1 WHERE id = $1", [id]
-    );
-    res.redirect('posts');
+    //res.redirect('posts');
     console.log("tehtud");
     } catch (err) {
     console.error(err.message);
