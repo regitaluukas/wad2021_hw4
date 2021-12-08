@@ -7,6 +7,7 @@
     <title>Single Post</title>
   </head>
   <body>
+    <%- include('../partials/header.ejs') %>
     <div id="main">
       <div class="post">
           <div class="post_header">
@@ -14,7 +15,7 @@
               <img src="/public/me.png" alt="profile picture" />
             </div>
             <div class="dateTime">
-              <p>12.02.2022</p>
+              <p>12.02.2021</p>
             </div>
           </div>
           <div class="picture">
@@ -25,14 +26,15 @@
             <p class="body"><%= posts.body %></p>
           </div>
           <div class="post_bottom">
-            <button>
-              <img src="/public/likebutton.png" alt="like_button" />
-              <span class="likes">1</span>
+            <button class="likes" data-put="<%= posts.id %>">
+              <img src="/public/likebutton.png" alt="like button" />
+              <span class="likes"><%= posts.likes%></span>
             </button>
           </div>
         </div>
       <button class="delete" data-del="<%= posts.id %>">Delete</button>
     </div>
+
     <script>
       const delreq = document.querySelector("button.delete");
       delreq.addEventListener("click", (e) => {
@@ -41,6 +43,16 @@
           method: "DELETE",
         }).then((window.location.href = "/posts"));
       });
+
+      
+      const likereq = document.querySelector("button.likes");
+      likereq.addEventListener("click", (e) => {
+        const endpoint = `/posts/${likereq.dataset.put}`;
+        fetch(endpoint, {
+          method: "PUT",
+        }).then((window.location.href = `/singlepost/${likereq.dataset.put}`));
+    });
+    
     </script>
   </body>
 </html>

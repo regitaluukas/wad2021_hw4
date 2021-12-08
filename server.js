@@ -45,7 +45,7 @@ app.get('/singlepost/:id', async(req, res) => {
 app.get('/posts/:id', async(req, res) => {
     try {
     const { id } = req.params;
-    console.log("get a post request has arrived");
+    console.log("get a post request has arrived (üks)");
     const Apost = await pool.query(
     "SELECT * FROM posts WHERE id = $1", [id]
     );
@@ -65,6 +65,7 @@ app.delete('/posts/:id', async(req, res) => {
     "DELETE FROM posts WHERE id = $1", [id]
     );
     res.redirect('posts');
+    
     } catch (err) {
     console.error(err.message);
     }
@@ -84,16 +85,57 @@ app.post('/posts', async(req, res) => {
    });
 
 app.put('/posts/:id', async(req, res) => {
+    console.log("jõudsin")
     try {
+    console.log(req.params)
     const { id } = req.params;
     const post = req.body;
-    console.log("update request has arrived");
+    console.log(id);
+    console.log("update request has arrived: update likes");
+    
     const updatepost = await pool.query(
-    "UPDATE posts SET likes = likes + 1 WHERE id = $1", [post.likes]
+    "UPDATE posts SET likes = likes + 1 WHERE id = $1", [id]
     );
     res.redirect('posts');
+    console.log("tehtud");
     } catch (err) {
     console.error(err.message);
     }
    });
+
+app.put('/posts', async(req, res) => {
+    console.log("jõudsin")
+    try {
+    console.log(req.params)
+    const { id } = req.params;
+    const post = req.body;
+    console.log(id);
+    console.log("update request has arrived: update likes");
+    
+    const updatepost = await pool.query(
+    "UPDATE posts SET likes = likes + 1 WHERE id = $1", [id]
+    );
+    res.redirect('posts');
+    console.log("tehtud");
+    } catch (err) {
+    console.error(err.message);
+    }
+   });
+
+   
+   
+//    app.put('/posts/:id', async(req, res) => {
+//     try {
+//     const { id } = req.params;
+//     const post = req.body;
+//     console.log("update request has arrived");
+//     const updatepost = await pool.query(
+//     "UPDATE nodetable SET (title, body, urllink) = ($2, $3, $4) WHERE id =
+//    $1", [id, post.title, post.body, post.urllink]
+//     );
+//     res.json(post);
+//     } catch (err) {
+//     console.error(err.message);
+//     }
+//    });
    

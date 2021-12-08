@@ -7,11 +7,10 @@
     <title>Posts</title>
   </head>
   <body>
-
+    <%- include('../partials/header.ejs') %>
     <div id="main">
         <% if (posts.length > 0) { %> <% posts.forEach(post => { %>
         <div class="post">
-        <a href="/singlepost/<%= post.id %>"> 
           <div class="post_header">
             <div class="icon">
               <img src="me.png" alt="profile picture" />
@@ -20,16 +19,19 @@
               <p>12.02.2021</p>
             </div>
           </div>
+          <a href="/singlepost/<%= post.id %>"> 
           <div class="picture">
             <img src= <%= post.url%>  alt="post picture" />
           </div>
+
           <div class="post_text">
             <h3 class="title"><%= post.title %></h3>
             <p class="body"><%= post.body %></p>
           </div>
-          <div class="post_bottom">
         </a>
-            <button @click="increment({<%= post.likes %>})" class="like">
+          <div class="post_bottom">
+        
+            <button class="like" data-put="<%= post.id %>">
               <img src="likebutton.png" alt="like button" />
               <span class="likes"><%= post.likes%></span>
             </button>
@@ -40,12 +42,15 @@
         <% } %>
     </div>
     <script>
-      const likereq = document.querySelector('button.like');
+     const likereq = document.querySelector("button.like");
       likereq.addEventListener("click", (e) => {
-        const endpoint = `/posts/${likereq.dataset.put}`;
+        const endpoint = `/posts`;
         fetch(endpoint, {
           method: "PUT",
-        }).then((window.location.href = "/posts"));
+          body:{
+            id: 11,
+          }
+        }).then((window.location.href = `/posts`));;
     });
     </script>
   </body>
