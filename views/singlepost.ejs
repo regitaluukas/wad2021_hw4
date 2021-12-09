@@ -26,13 +26,18 @@
             <p class="body"><%= posts.body %></p>
           </div>
           <div class="post_bottom">
+            <% if (posts.active == true) { %>
             <button class="likes" data-put="<%= posts.id %>">
+            <% } else { %>
+              <button class="likes" data-put="<%= posts.id %>" disabled="true">
+            <% } %>
               <img src="/public/likebutton.png" alt="like button" />
               <span class="likes"><%= posts.likes%></span>
             </button>
           </div>
         </div>
       <button class="delete" data-del="<%= posts.id %>">Delete</button>
+      <%- include('../partials/footer.ejs') %>
     </div>
 
     <script>
@@ -46,11 +51,13 @@
 
       
       const likereq = document.querySelector("button.likes");
+      document.querySelector("button.likes").ariaDisabled = true;
       likereq.addEventListener("click", (e) => {
         const endpoint = `/posts/${likereq.dataset.put}`;
         fetch(endpoint, {
           method: "PUT",
-        }).then((window.location.href = `/singlepost/${likereq.dataset.put}`));
+        }).then((window.location.reload()));
+        
     });
     
     </script>

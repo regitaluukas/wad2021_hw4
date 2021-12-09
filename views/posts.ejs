@@ -7,8 +7,10 @@
     <title>Posts</title>
   </head>
   <body>
+    <% i = 1%>
     <%- include('../partials/header.ejs') %>
     <div id="main">
+      <% posts.sort()%>
         <% if (posts.length > 0) { %> <% posts.forEach(post => { %>
         <div class="post">
           <div class="post_header">
@@ -30,25 +32,34 @@
           </div>
         </a>
           <div class="post_bottom">
-        
-            <button class="like" data-put="<%= post.id %>">
+            <% if (post.active == true) { %>
+            <button class="like" id="like_button_<%= i %>" data-put="<%= post.id %>">
+            <% } else { %>
+            <button class="likes" data-put="<%= post.id %>" disabled="true">
+            <% } %>
               <img src="likebutton.png" alt="like button" />
               <span class="likes"><%= post.likes%></span>
             </button>
+            <% i++ %>
           </div>
         </div>
         <% }) %> <% } else { %>
         <p>You did not post anything...</p>
         <% } %>
+      <%- include('../partials/footer.ejs') %>
     </div>
     <script>
-     const likereq = document.querySelector("button.like");
-      likereq.addEventListener("click", (e) => {
-        const endpoint = `/posts/${likereq.dataset.put}`;
+     const likereq = document.querySelectorAll("button.like");
+     likereq.forEach(btn =>{
+      btn.addEventListener("click", (e) => {
+        const endpoint = `/posts/${btn.dataset.put}`;
+        btn.disabled = true;
         fetch(endpoint, {
           method: "PUT",
-        }).then((window.location.href = `/posts`));;
+        }).then((window.location.reload()));;
     });
+     })
+      
     </script>
   </body>
 </html>

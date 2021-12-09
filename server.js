@@ -96,7 +96,10 @@ app.put('/posts/:id', async(req, res) => {
     const updatepost = await pool.query(
     "UPDATE posts SET likes = likes + 1 WHERE id = $1", [id]
     );
-    //res.redirect('posts');
+    const changeActive = await pool.query(
+        "UPDATE posts SET active = false WHERE id = $1", [id]
+        );
+    //res.redirect('/posts');
     console.log("tehtud");
     } catch (err) {
     console.error(err.message);

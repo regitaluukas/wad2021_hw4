@@ -96,6 +96,11 @@ a.router-link-exact-active {
   background-color: rgb(236, 236, 236);
 }
 
+.post .post_bottom button:disabled
+{
+  background-color: rgba(64, 117, 197, 0.137);
+}
+
 .post .post_bottom button img {
   width: 20px;
 }
