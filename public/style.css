@@ -27,8 +27,6 @@ nav {
   );
   text-align: center;
   font-weight: bold;
-    color: #2c3e50;
-
 }
 
 a.router-link-exact-active {
@@ -96,10 +94,19 @@ a.router-link-exact-active {
   background-color: rgb(236, 236, 236);
 }
 
-.post .post_bottom button:disabled
-{
+.post .post_bottom button:disabled {
   background-color: rgba(64, 117, 197, 0.137);
+  cursor: default;
 }
+
+.post .post_bottom button:disabled img {
+  opacity: 0.7;
+}
+
+.post .post_bottom button:disabled .likes {
+  opacity: 0.9;
+}
+
 
 .post .post_bottom button img {
   width: 20px;

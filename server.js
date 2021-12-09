@@ -13,13 +13,12 @@ app.use('/public', express.static('public')); //line I added to make pictures wo
 app.listen(3000, () => {
  console.log("Server is listening to port 3000")
 });
-
-
-app.get('/posts', async(req, res) => {
+   
+app.get(['/posts', '/'], async(req, res) => {
     try {
     console.log("get posts request has arrived");
     const posts = await pool.query(
-    "SELECT * FROM posts"
+    "SELECT * FROM posts ORDER BY id"
     );
     res.render('posts', { posts: posts.rows });
     } catch (err) {

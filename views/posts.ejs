@@ -7,10 +7,8 @@
     <title>Posts</title>
   </head>
   <body>
-    <% i = 1%>
     <%- include('../partials/header.ejs') %>
     <div id="main">
-      <% posts.sort()%>
         <% if (posts.length > 0) { %> <% posts.forEach(post => { %>
         <div class="post">
           <div class="post_header">
@@ -33,14 +31,13 @@
         </a>
           <div class="post_bottom">
             <% if (post.active == true) { %>
-            <button class="like" id="like_button_<%= i %>" data-put="<%= post.id %>">
+            <button class="like" data-put="<%= post.id %>">
             <% } else { %>
             <button class="likes" data-put="<%= post.id %>" disabled="true">
             <% } %>
               <img src="likebutton.png" alt="like button" />
               <span class="likes"><%= post.likes%></span>
             </button>
-            <% i++ %>
           </div>
         </div>
         <% }) %> <% } else { %>
@@ -56,7 +53,7 @@
         btn.disabled = true;
         fetch(endpoint, {
           method: "PUT",
-        }).then((window.location.reload()));;
+        }).then((location.reload()));
     });
      })
       
