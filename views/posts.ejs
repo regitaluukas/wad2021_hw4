@@ -53,7 +53,7 @@
         btn.disabled = true;
         fetch(endpoint, {
           method: "PUT",
-        }).then((location.reload()));
+        }).then((response => {window.location.reload(true)}));
     });
      })
       
