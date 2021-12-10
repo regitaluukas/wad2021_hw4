@@ -8,13 +8,15 @@
     <title>Add new post</title>
 </head>
 <body>
-    <%- include('../partials/header.ejs') %>
-    <form> 
-        Title: <input type="text" name="title" placeholder="Title"><br> 
-        Body: <input type="text" name="body" placeholder="Body"><br>
-        Other: <input type="text" name="other" placeholder="Other"><br>
-        <input type="submit" value="Add post" />
+    <div class="addpost">
+        <%- include('../partials/header.ejs') %>
+        <form> 
+            Title: <input type="text" name="title" placeholder="Title"><br> 
+            Body: <input type="text" name="body" placeholder="Body"><br>
+            Url: <input type="text" name="urllink" placeholder="Url link"><br>
+            <input type="submit" value="Add post" />
         </form>
-    <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/footer.ejs') %>
+    </div>
 </body>
 </html>
