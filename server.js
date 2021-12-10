@@ -103,10 +103,12 @@ app.put('/posts/:id', async(req, res) => {
     } catch (err) {
     console.error(err.message);
     }
-   });
+});
 
-   
-   
+app.get('/addnewpost', (req, res) => {
+    res.render('addnewpost');
+});
+
 //    app.put('/posts/:id', async(req, res) => {
 //     try {
 //     const { id } = req.params;
