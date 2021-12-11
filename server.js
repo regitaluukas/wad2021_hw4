@@ -112,19 +112,3 @@ app.get('/addnewpost', (req, res) => {
 app.use((req, res) => {
     res.status(404).render('404');
 });
-
-//    app.put('/posts/:id', async(req, res) => {
-//     try {
-//     const { id } = req.params;
-//     const post = req.body;
-//     console.log("update request has arrived");
-//     const updatepost = await pool.query(
-//     "UPDATE nodetable SET (title, body, urllink) = ($2, $3, $4) WHERE id =
-//    $1", [id, post.title, post.body, post.urllink]
-//     );
-//     res.json(post);
-//     } catch (err) {
-//     console.error(err.message);
-//     }
-//    });
-   
