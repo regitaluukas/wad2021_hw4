@@ -72,16 +72,16 @@ app.delete('/posts/:id', async(req, res) => {
 
 app.post('/posts', async(req, res) => {
     try {
-    const post = req.body;
-    console.log(post);
-    const newpost = await pool.query(
-    "INSERT INTO posts(title, body, urllink) values ($1, $2, $3)RETURNING*", [post.title, post.body, post.urllink]
-    );
-    res.redirect('posts');
+        const post = req.body;
+        console.log(post);
+        const newpost = await pool.query(
+            "INSERT INTO posts(title, body, url) values ($1, $2, $3)RETURNING*", [post.title, post.body, post.urllink]
+            );
+            res.redirect('posts');
     } catch (err) {
-    console.error(err.message)
+        console.error(err.message)
     }
-   });
+});
 
 app.put('/posts/:id', async(req, res) => {
     console.log("jõudsin")
