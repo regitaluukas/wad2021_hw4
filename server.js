@@ -109,6 +109,10 @@ app.get('/addnewpost', (req, res) => {
     res.render('addnewpost');
 });
 
+app.use((req, res) => {
+    res.status(404).render('404');
+});
+
 //    app.put('/posts/:id', async(req, res) => {
 //     try {
 //     const { id } = req.params;
