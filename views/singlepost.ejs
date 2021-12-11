@@ -37,9 +37,9 @@
           </div>
         </div>
       <button class="delete" data-del="<%= posts.id %>">Delete</button>
-      <%- include('../partials/footer.ejs') %>
+      
     </div>
-
+    <%- include('../partials/footer.ejs') %>
     <script>
       const delreq = document.querySelector("button.delete");
       delreq.addEventListener("click", (e) => {

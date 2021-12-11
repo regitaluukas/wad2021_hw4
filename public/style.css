@@ -33,7 +33,6 @@ a.router-link-exact-active {
     color: rgb(64, 118, 197);
 }
 
-
 .post {
   width: 70%;
   border-radius: 1px;
@@ -146,4 +145,54 @@ a:visited {
 
 .delete:hover {
   background-color: rgb(33, 68, 121);
+}
+
+.createPost {
+  background-color: white;
+  margin: 5% auto 0 auto;
+  padding: 70px 60px 30px;
+  width: 400px;
+}
+
+.createPost form {
+  margin: -15% auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.createPost form input {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.createPost form h3 {
+  text-align: center;
+}
+
+.createPost form button {
+  background-color: rgb(40, 75, 128);
+  color: white;
+  padding: 10px 20px;
+  width: 90px;
+  align-self: center;
+  border: none;
+}
+
+.createPost form button:hover {
+  background-color: rgb(33, 68, 121);
+}
+
+footer {
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.error {
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
